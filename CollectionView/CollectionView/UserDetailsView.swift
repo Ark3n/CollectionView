@@ -15,6 +15,12 @@ class UserDetailsView: UIView {
         return label
     }()
     
+    var spaceLabel: UILabel  = {
+        let label = UILabel()
+        label.text = ":  "
+        return label
+    }()
+    
     var valueLabel: UILabel  = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -32,13 +38,13 @@ class UserDetailsView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
     
-        let labelsStackView = UIStackView(arrangedSubviews: [titleLabel, valueLabel])
+        let labelsStackView = UIStackView(arrangedSubviews: [titleLabel, spaceLabel, valueLabel])
         labelsStackView.translatesAutoresizingMaskIntoConstraints = false
         labelsStackView.axis = .horizontal
-        labelsStackView.distribution = .equalSpacing
+        labelsStackView.alignment = .leading
         addSubview(labelsStackView)
         addSubview(deviderView)
-        labelsStackView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, height: 50)
+        labelsStackView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10)
         deviderView.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 1)
         self.setHeight(50)
     }
